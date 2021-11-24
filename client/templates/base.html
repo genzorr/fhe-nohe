@@ -1,0 +1,19 @@
+<!doctype html>
+<HTML>
+	<HEAD>
+		<link type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" />
+		{% block title %}
+		{% if title %}
+			<title>FHE -- {{ title }}</title>
+		{% else %}
+			<title>FHE 2021 </title>
+		{% endif %}
+		{% endblock %}
+	</HEAD>
+
+	<BODY>
+	{% block content %}	
+		
+	{% endblock %}
+	</BODY>
+</HTML>

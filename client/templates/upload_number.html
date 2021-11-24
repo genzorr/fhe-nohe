@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<form action="/upload_number" method="post" class="form-upload">
+	{{ form.hidden_tag() }}
+	{% for field in form if field.name not in ['csrf_token', 'upload'] %}
+		<p> {{ field.label() }} 
+		{% if field.errors %}
+			{{ field(class="invalid") }}
+			<span class="invalid-feedback">
+				{% for e in field.errors %}
+				{{ e }}
+				{% endfor %}
+			</span>
+		{% else %}
+			{{ field() }}
+		{% endif %}
+	{% endfor %}
+	<p> {{ form.upload.label() }} {{ form.upload() }}
+	<!-- <p><label> Name:</label> <input type="text" name="username" value="" required />
+	<p><label> Your Number:</label> <input type="text" name="number" value="" required />
+	<p>	<input type="submit" value="Send"/> -->
+</form>
+{% endblock %}
