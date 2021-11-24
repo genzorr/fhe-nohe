@@ -29,6 +29,7 @@ def upload_number():
 			flash("Try again!", category="error")
 			
 	return render_template('upload_number.html', title="Upload", form=form)
+	
 	# if request.method == 'POST':
 		# if len(request.form['number']) > 1:
 		# 	flash("Successfully sent", category="success")
