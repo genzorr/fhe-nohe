@@ -20,10 +20,10 @@ def upload_number():
 	if request.method == 'POST':
 		if form.validate_on_submit():
 			flash("Successfully sent!", category="success")
-			client_number = request.form['number']
-			with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+			client_number = request.form['number']	#<---------------------- Client number. Handle it!
+			with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: # Connect to the server
 				s.connect((HOST, PORT))
-				s.sendall(str(client_number).encode('utf8'))
+				s.sendall(str(client_number).encode('utf8'))		# Send client number to the server
 			print(client_number)
 		else:
 			flash("Try again!", category="error")
