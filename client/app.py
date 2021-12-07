@@ -20,11 +20,18 @@ def upload_number():
 	if request.method == 'POST':
 		if form.validate_on_submit():
 			flash("Successfully sent!", category="success")
-			client_number = request.form['number']	#<---------------------- Client number. Handle it!
+			x = request.form['x']	
+			y = request.form['y']	
+			
+			## Encrypt here!
+			if request.form['choice'] == 'XOR':
+				pass
+			##
 			with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: # Connect to the server
 				s.connect((HOST, PORT))
-				s.sendall(str(client_number).encode('utf8'))		# Send client number to the server
-			print(client_number)
+				s.sendall(x.encode('utf8'))		# Send text x to the server
+				s.sendall(y.encode('utf8'))		# Send text y to the server
+			print(x, y)
 		else:
 			flash("Try again!", category="error")
 			

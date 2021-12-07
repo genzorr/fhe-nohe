@@ -15,6 +15,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024)
             if not data:
                 break
-            # conn.sendall(int(data.decode('utf8')))
-            print(int(data.decode('utf8'))) # Number from client or encrypted number from client
+            
+            print(str(data.decode('utf8'))) # Number from client or encrypted number from client
+            conn.sendall(str(data.decode('utf8'))) # Send to the client
             
