@@ -4,6 +4,7 @@ import itertools
 import hashlib
 import numpy as np
 from Crypto.Cipher import ARC4
+from enum import Enum
 
 def generate_random_secret(size=20, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -200,6 +201,26 @@ class Coder():
         self.inverse_permute_bits()
         # Output decoded text
         return bits_to_bytes(self.Y)
+
+class Operations(Enum):
+    XOR = 1
+    AND = 2
+
+class Functions:
+    def __init__(self, X, Y):
+        self.X = X
+        self.Y = Y
+
+    def nohe_xor(self):
+        homomorphic_xor = bytearray((a ^ b) for (a, b) in zip(self.X, self.Y))
+        for index in range(len(homomorphic_xor)):
+            homomorphic_xor[index] ^= 0xFF
+        homomorphic_xor = bytes(homomorphic_xor)
+        return homomorphic_xor
+
+    def nohe_and(self):
+        homomorphic_and = bytes((a | b) for (a, b) in zip(self.X, self.Y))
+        return homomorphic_and
 
 '''
 A small example to show how algorithm works:

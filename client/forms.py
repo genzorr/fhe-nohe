@@ -1,10 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField
 from wtforms.validators import DataRequired, Length
+from nohe.nohe import Operations
 
 class UploadForm(FlaskForm):
-	name = StringField("Your Name: ", validators=[DataRequired(), Length(min=1, max=15, message="Name up to 15 characters")])
-	x = StringField("Text X: ", validators=[DataRequired(), Length(min=1, max=15, message="Number from 2 to 10 digits")])
-	y = StringField("Text Y: ", validators=[DataRequired(), Length(min=1, max=15, message="Number from 2 to 10 digits")])
-	choice = RadioField('Operation', choices = ['XOR', 'AND'])
+	X = StringField("Text X: ", validators=[DataRequired(), Length(min=1, max=1024, message="First text (1024 bytes max)")])
+	# textX = RadioField('Text X type', choices=['string', 'bytes'])
+	Y = StringField("Text Y: ", validators=[DataRequired(), Length(min=1, max=1024, message="Second text (1024 bytes max)")])
+	# textY = RadioField('Text X type', choices=['string', 'bytes'])
+
+	operation = RadioField('Operation', choices = [op.name for op in Operations])
 	upload = SubmitField("Send")
