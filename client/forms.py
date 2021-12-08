@@ -12,7 +12,8 @@ class UploadForm(FlaskForm):
 					validators=[DataRequired(), Length(min=1, max=1024, message='Second text (1024 bytes max)')],
 					render_kw={'class': 'form-control', 'rows': 2, 'columns': 20}
 					)
-
+	operation = RadioField('Operation', choices = [op.name for op in Operations])
+	upload = SubmitField('Compute')
 	result = TextAreaField('Result',
 					render_kw={'class': 'form-control', 'rows': 2, 'columns': 20}
 					)
@@ -20,5 +21,4 @@ class UploadForm(FlaskForm):
 					render_kw={'class': 'form-control', 'rows': 2, 'columns': 20}
 					)
 
-	operation = RadioField('Operation', choices = [op.name for op in Operations])
-	upload = SubmitField('Compute')
+	
