@@ -3,7 +3,7 @@ import sys
 import socket
 import errno
 from flask import Flask, request, render_template, flash, url_for, redirect
-from forms import UploadForm
+from .forms import UploadForm
 import nohe.nohe as nohe
 from nohe.packet import ClientPacket, ServerPacket
 

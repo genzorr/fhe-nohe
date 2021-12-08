@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-import sys
 import socket
 import errno
 from time import sleep
