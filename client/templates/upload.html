@@ -9,7 +9,8 @@
 <form action="/upload" method="post" class="form-upload">
 	{{ form.hidden_tag() }}
 	{% for field in form if field.name not in ['csrf_token'] %}
-		<p> {{ field.label() if field.name is not in ['upload']}} 
+		<p class="form-control-lg">
+			{{ field.label() if field.name is not in ['upload']}} 
 		{% if field.errors %}
 			{{ field(class="invalid") }}
 			<span class="invalid-feedback">
@@ -23,4 +24,12 @@
 	{% endfor %}
 		
 </form>
+<h1 align="center">
+    <form action="/" method="get">
+        <div class="input">
+            <input class="btn btn-outline-secondary btn-lg btn-block"
+                    type="submit" style="width:100%" value="MAIN PAGE">
+    </div>
+</form>
+<h1>
 {% endblock %}

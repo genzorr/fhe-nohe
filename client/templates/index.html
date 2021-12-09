@@ -3,10 +3,13 @@
 {% block content %}
 {{ super() }}
 <!-- <p> {{ title }} -->
-<p> FHE NOHE implementation, 2021
-<p> By Litvinov M., Korolev G., Shashkov I., Tesalin V.
-<form action="/upload" method="get">
-    <input type="submit" value="START" 
-         name="Submit" id="go" />
+
+<h1 align="center">
+    <form action="/upload" method="get">
+        <div class="input">
+            <input class="btn btn-primary btn-lg btn-block"
+                    type="submit" style="width:100%" value="START">
+    </div>
 </form>
+<h1>
 {% endblock %}

@@ -170,6 +170,7 @@ address {
 ol,
 ul {
   padding-left: 2rem;
+  list-style: none; /* Added */
 }
 
 ol,
@@ -3462,7 +3463,7 @@ textarea.form-control-lg {
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
