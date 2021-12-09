@@ -31,6 +31,9 @@ def upload():
 
 			# Align texts
 			max_len = max(len(X), len(Y))
+			initial_len = max_len
+			if max_len < 3:
+				max_len = 3
 			X += '0'*(max_len - len(X))
 			Y += '0'*(max_len - len(Y))
 
@@ -92,8 +95,8 @@ def upload():
 
 			if (result == decXY):
 				print('Computation is valid')
-				form.result.data = result.decode('utf-8')
-				form.result_hex.data = result.hex()
+				form.result.data = result.decode('utf-8')[0:initial_len]
+				form.result_hex.data = result.hex()[0:initial_len*2]
 			else:
 				print('Computation is invalid')
 
