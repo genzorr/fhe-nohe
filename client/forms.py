@@ -15,7 +15,7 @@ class UploadForm(FlaskForm):
 	operation = RadioField('Operation', 
 					choices = [op.name for op in Operations],
 					render_kw={'style': 'width:10%'})
-	upload = SubmitField('Compute', 
+	upload = SubmitField('COMPUTE', 
 					render_kw={'class': 'btn btn-primary btn-lg', 'style': 'width:100%'})
 	result = TextAreaField('Result',
 					render_kw={'class': 'form-control', 'rows': 2, 'columns': 20}
